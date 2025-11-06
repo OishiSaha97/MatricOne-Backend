@@ -1,0 +1,72 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.9.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.datasoft.bkash'
+version = '0.0.1'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+//sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	testImplementation 'org.testng:testng:7.1.0'
+
+	compileOnly 'org.hibernate:hibernate-jpamodelgen'
+    annotationProcessor 'org.hibernate:hibernate-jpamodelgen'
+    testCompileOnly 'org.hibernate:hibernate-jpamodelgen'
+    testAnnotationProcessor 'org.hibernate:hibernate-jpamodelgen'
+
+    implementation 'com.querydsl:querydsl-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+	runtimeOnly 'mysql:mysql-connector-java:8.0.15'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+
+	compile 'org.jsoup:jsoup:1.11.3'
+	compile 'io.springfox:springfox-swagger2:2.9.2'
+	compile 'io.springfox:springfox-swagger-ui:2.9.2'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.aspectj:aspectjtools:1.6.2'
+	compile 'com.google.code.gson:gson:2.8.5'
+
+	compile 'org.apache.poi:poi:4.1.2'
+	compile 'org.apache.poi:poi-ooxml:4.1.2'
+
+	implementation 'commons-io:commons-io:2.9.0'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.1.9.RELEASE'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+
+}
+
+tasks.withType(Test) {
+	scanForTestClasses = false
+	include "**/*Test.class" // whatever Ant pattern matches your test class files
+}
+
+//test {
+//	useJUnitPlatform()
+//}
+sourceSets.configureEach { sourceSet ->
+    tasks.named(sourceSet.compileJavaTaskName).configure {
+        options.annotationProcessorGeneratedSourcesDirectory = file("$buildDir/generated/sources/java")
+    }
+}

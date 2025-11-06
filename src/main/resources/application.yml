@@ -1,0 +1,35 @@
+cors-allowed-origin: "*"
+DB_NAME: "luncheon"
+AUTH_API: "http://182.163.112.216/SE-API-Gateway/Home/LoginByApp"
+server:
+  port: 8082
+  compression:
+    enabled: true
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: "jdbc:mysql://192.168.14.252:3306/${DB_NAME}?createDatabaseIfNotExist=true&autoReconnect=true&failOverReadOnly=false&useSSL=false"
+    username: sohel
+    password: Remi@123
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 10
+    tomcat:
+      max-active: 10
+  jpa:
+    properties:
+      hibernate:
+        dialect=org:
+          hibernate:
+            dialect: MySQL8Dialect
+    hibernate:
+      ddl-auto: none
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+    time-zone: Asia/Dhaka
+jwt:
+  secret: AeLhUY7wfVvchzK8ED3GnrZuOG7Llt3JxmtH7nnbwd0=
+  expiration: 864000000
+
