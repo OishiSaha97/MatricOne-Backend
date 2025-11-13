@@ -94,6 +94,11 @@ public class KpiConfigParams {
     private Map<String, Object> fcaData;
     private Map<String, Object> approver;
 //    private Map<String, Object> randomData;
+    private String objectiveData;
+    private String selfData;
+    private String valuesData;
+    private String managerData;
+    private String hrData;
     private String randomData;
     private String hierarchyData;
     private Map<String, Object> oldTotal;

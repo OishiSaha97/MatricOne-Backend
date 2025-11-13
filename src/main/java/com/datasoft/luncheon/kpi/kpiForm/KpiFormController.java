@@ -26,14 +26,33 @@ public class KpiFormController {
         return kpiFromService.saveKpi(params);
     }
 
+    @PostMapping("/kpi-form/revert")
+    public ApiResponse revertKpi(@RequestBody KpiConfigParams params) {
+
+        return kpiFromService.revertKpi(params);
+    }
+
     @PostMapping(value = "/list/myKpi")
     public ApiResponse myKpiList(@RequestBody KpiConfigParams params) {
         return kpiFromService.myKpiList(params);
     }
 
+
     @PostMapping(value = "/list/teamKpi")
     public ApiResponse allKpiList(@RequestBody KpiConfigParams params) {
         return kpiFromService.allKpiList(params);
+    }
+
+
+    @PostMapping(value = "/list/allEmp")
+    public ApiResponse allEmpList(@RequestBody KpiConfigParams params) {
+        return kpiFromService.allEmpList(params);
+    }
+
+    @PostMapping(value = "/kpi-form/evaluation-insert")
+    public ApiResponse evaluationInsertData(@RequestBody KpiConfigParams params) {
+
+        return kpiFromService.evaluationInsertData(params);
     }
 
 
