@@ -36,7 +36,7 @@ public class DashboardController {
             @RequestParam(required = false) String date,
             @RequestParam(required = false) String userKpiId
     ){
-        return dashboardService.addSetDate(modifyFor,date,selectedFor,userKpiId);
+          return dashboardService.addSetDate(modifyFor,date,selectedFor,userKpiId);
     }
 
 
