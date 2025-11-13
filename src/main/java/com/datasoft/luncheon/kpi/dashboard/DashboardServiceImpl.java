@@ -37,6 +37,7 @@ public class DashboardServiceImpl implements DashboardService {
     public ResponseEntity<?> saveDateForkpi(String date, String userId, String forDate) {
         dashboardDao.saveInitiationNotification(date,userId,forDate);
         dashboardDao.saveKpiDate(date,userId,forDate);
+        dashboardDao.updateEvaDate(date,userId,forDate);
         return new ResponseEntity<>(new ApiResponse(200, "KPI Date configured successfully", null), HttpStatus.OK);
     }
 

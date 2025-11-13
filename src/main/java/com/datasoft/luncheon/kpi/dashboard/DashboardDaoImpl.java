@@ -139,6 +139,13 @@ public class DashboardDaoImpl implements DashboardDao {
         namedParameterJdbcTemplate.update(insertSql, params);
     }
 
+    @Override
+    public void updateEvaDate(String date, String userId, String forDate) {
+        String updateSql = "UPDATE conf_kpi_date_evalution SET status = 0 WHERE `year` = YEAR(NOW())  ";
+        namedParameterJdbcTemplate.getJdbcTemplate().update(updateSql);
+        int currentYear = LocalDate.now().getYear();
+    }
+
 
 }
 

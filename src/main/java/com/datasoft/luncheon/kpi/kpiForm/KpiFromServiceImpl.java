@@ -115,6 +115,7 @@ public class KpiFromServiceImpl implements KpiFromService {
             Map<String, Object> procedureResult = jdbcFunctionDao.getProcedureResult("sp_get_my_kpi_list", param);
             Map<String, Object> result = new LinkedHashMap<>();
             result.put("content", procedureResult.get("#result-set-1"));
+            result.put("addPermission", procedureResult.get("#result-set-2"));
             return new ApiResponse(HttpStatus.OK.value(),"KPI List Fetched Successfully",result);
         } catch (Exception e) {
             log.error("Error =>{}, Reason =>{}, Stacktrace =>{}", e.getMessage(), e.getCause(), e);

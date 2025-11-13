@@ -12,4 +12,6 @@ public interface DashboardDao {
     void saveInitiationNotification(String date, String userId, String forDate);
 
     void saveEvalutionDateNotification(String date, String userId, String forDate);
+
+    void updateEvaDate(String date, String userId, String forDate);
 }
