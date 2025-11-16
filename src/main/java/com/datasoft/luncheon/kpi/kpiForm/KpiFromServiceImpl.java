@@ -169,6 +169,7 @@ public class KpiFromServiceImpl implements KpiFromService {
         spParam.put("remark", params.getRemarks());
         spParam.put("pid", params.getPid());
         spParam.put("userId", params.getUserIdKPI());
+        spParam.put("overallRate", params.getOtherParam());
         return spParam;
     }
 
