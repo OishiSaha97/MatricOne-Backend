@@ -91,8 +91,11 @@ public class AttributeServiceImpl implements  AttributeService{
 
     @Override
     public ResponseEntity<?> saveAttribute(String selectedKpiType,String attributeName,String userId) {
-        attributeDao.save(selectedKpiType,attributeName,userId);
-        return new ResponseEntity<>(new ApiResponse(200, "KPI Attribute configured successfully", null), HttpStatus.OK);
+        ApiResponse result = attributeDao.save(selectedKpiType,attributeName,userId);
+        return ResponseEntity.ok(result);
+//        return ResponseEntity
+//                .status(HttpStatus.NO_CONTENT)
+//                .body(result);
     }
 
     @Override
