@@ -1,8 +1,8 @@
 package com.datasoft.luncheon.kpi.attributes;
 
-import com.datasoft.luncheon.kpi.KpiConfigParams;
-import com.datasoft.luncheon.kpi.attributes.dto.AttributeDto;
+import com.datasoft.luncheon.commons.model.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +12,7 @@ public class AttributeDaoImpl implements AttributeDao{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public void save(String selectedKpiType,String attributeName,String userId) {
+    public ApiResponse save(String selectedKpiType, String attributeName, String userId) {
         String checkSql = "SELECT COUNT(*) FROM conf_kpi_attribute " +
                 "WHERE kpi_type = ? AND kpi_category_name = ?";
 
@@ -22,11 +22,12 @@ public class AttributeDaoImpl implements AttributeDao{
                 Integer.class
         );
         if (count != null && count > 0) {
-            return;
+            return new ApiResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "KPI Type had already same category name", null);
         }
 
         String sql = "INSERT INTO conf_kpi_attribute (kpi_type, kpi_category_name, status,created_by, created_at) VALUES (?, ?, ?, ?, NOW())";
         jdbcTemplate.update(sql, selectedKpiType, attributeName,1, userId);
+        return null;
     }
 
     @Override
