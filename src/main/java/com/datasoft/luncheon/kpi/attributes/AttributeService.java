@@ -11,4 +11,6 @@ public interface AttributeService {
     ApiResponse allAttribute(KpiConfigParams params);
 
     ResponseEntity<?> saveAttribute(String selectedKpiType,String attributeName,String userId);
+
+    ResponseEntity<?> updateAttribute(String selectedKpiType, String attributeName, String userId,String id);
 }

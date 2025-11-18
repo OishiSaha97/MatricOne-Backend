@@ -17,7 +17,8 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<?> authenticate(@RequestParam String username, @RequestParam String password) throws UserPrincipalNotFoundException {
-        return  new ResponseEntity<>(userService.authenticate(username, password), HttpStatus.OK);
+        return  new ResponseEntity<>(
+                userService.authenticate(username, password), HttpStatus.OK);
     }
 
     @GetMapping("/i-check")

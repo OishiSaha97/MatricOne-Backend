@@ -95,7 +95,11 @@ public class AttributeServiceImpl implements  AttributeService{
         return new ResponseEntity<>(new ApiResponse(200, "KPI Attribute configured successfully", null), HttpStatus.OK);
     }
 
-
+    @Override
+    public ResponseEntity<?> updateAttribute(String selectedKpiType, String attributeName, String userId,String id) {
+        attributeDao.update(selectedKpiType,attributeName,userId,id);
+        return new ResponseEntity<>(new ApiResponse(200, "KPI Attribute Reconfigured successfully", null), HttpStatus.OK);
+    }
 
 
 }

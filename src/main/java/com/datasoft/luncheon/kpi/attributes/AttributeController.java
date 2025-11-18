@@ -24,6 +24,15 @@ public class AttributeController {
         return attributeService.saveAttribute(selectedKpiType,attributeName,userId);
     }
 
+    @PostMapping("/update")
+    public ResponseEntity<?> submitKpiAttribute( @RequestParam(required = false) String selectedKpiType,
+                                                 @RequestParam(required = false) String id,
+                                        @RequestParam(required = false) String attributeName,
+                                        @RequestParam(required = false) String userId) {
+
+        return attributeService.updateAttribute(selectedKpiType,attributeName,userId,id);
+    }
+
 //    @PostMapping(value = "/list")
 //    public ApiResponse allHierarchy(@RequestBody AttributeDto attribute) {
 //        return attributeService.allAttribute(attribute);

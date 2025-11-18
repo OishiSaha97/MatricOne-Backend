@@ -29,4 +29,16 @@ public class AttributeDaoImpl implements AttributeDao{
         jdbcTemplate.update(sql, selectedKpiType, attributeName,1, userId);
     }
 
+    @Override
+    public void update(String selectedKpiType, String attributeName, String userId, String id) {
+        String sql = "UPDATE conf_kpi_attribute " +
+                "SET kpi_type = ?, " +
+                "    kpi_category_name = ?, " +
+                "    updated_by = ?, " +
+                "    updated_at = NOW() " +
+                "WHERE id = ?";
+
+        jdbcTemplate.update(sql, selectedKpiType, attributeName, userId, id);
+    }
+
 }
