@@ -45,7 +45,7 @@ public class HierarchyServiceImpl implements HierarchyService {
         try{
             Map<String, Object> spParam = kpiPrepareParam(params );
             Map<String, Object> result = jdbcFunctionDao.getProcedureResult("sp_ins_hierarchy_submit", spParam);
-            return new ApiResponse(HttpStatus.OK.value(),"Hierarchy Save Successfully",result);}catch (Exception e) {
+            return new ApiResponse(HttpStatus.OK.value(),"Approval Hierarchy added successfully",result);}catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e.getCause());
         }
     }
