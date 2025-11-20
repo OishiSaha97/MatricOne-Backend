@@ -46,7 +46,7 @@ public class UserService {
 
     public Map<String, Object> authenticate(String username, String password) throws UserPrincipalNotFoundException {
         if(isUserLuncheonLocal(username)){
-           return authenticateLocally(username, password);
+            return authenticateLocally(username, password);
         }
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -66,11 +66,15 @@ public class UserService {
                 jdbcFunctionDao.getJdbcTemplate().update("UPDATE users set full_name = ? WHERE LOWER(username) = ?", apiResponse.get("Name"), username.trim().toLowerCase());
                 return apiResponse;
             } else {
-                throw new UsernameNotFoundException("Invalid Credentials");
+                return apiResponse;
+//                throw new UsernameNotFoundException("Invalid Credentials");
+
+
             }
         } catch (Exception e){
             e.printStackTrace();
         }
+
         throw new UserPrincipalNotFoundException("User not found");
     }
 
