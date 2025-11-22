@@ -66,7 +66,7 @@ public class UserService {
                 jdbcFunctionDao.getJdbcTemplate().update("UPDATE users set full_name = ? WHERE LOWER(username) = ?", apiResponse.get("Name"), username.trim().toLowerCase());
                 return apiResponse;
             } else {
-                throw new UsernameNotFoundException("Invalid Credentials");
+                return apiResponse;
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -81,13 +81,16 @@ public class UserService {
                 Map<String, Object> response = new HashMap<>();
                 response.put("Name", user.get("full_name"));
                 response.put("token", tokenProvider.generateToken(username));
+                response.put("isLoginSuccess","true");
                 return response;
             }
         } catch (Exception e){
             e.printStackTrace();
 
         }
-        throw new UsernameNotFoundException("Invalid Credentials");
+        Map<String, Object> response2 = new HashMap<>();
+        response2.put("isLoginSuccess","false");
+        return response2;
     }
 
     private boolean isUserLuncheonLocal(String username) {
