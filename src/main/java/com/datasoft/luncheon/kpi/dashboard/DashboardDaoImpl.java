@@ -120,7 +120,7 @@ public class DashboardDaoImpl implements DashboardDao {
         // Decide which notification message to use
         String notification;
         if (getInitiationDate == null || getInitiationDate.isEmpty()) {
-            notification = "The KPI initiation window is now open. Please complete your evaluations by  "
+            notification = "The KPI evaluation window is now open. Please complete your evaluations by  "
                     + date + ".";
         } else {
             notification = "The KPI evaluation end date has been changed to " + date
